@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<style>
+    form{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 30%;
+    }
+</style>
+
+<body>
+
+<form action="">
+
+    <input type="text" id="first_element" value="First text field">
+    <input type="text" id="second_element" value="Second text field">
+
+</form>
+
+<script>
+
+    const events = [["first_element", "focus", "First text field on focus"],
+        ["second_element", "select", "Second text field on focus"]];
+
+    //onFocus
+    //onSelect
+    for(let eventType of events){
+
+        document.getElementById(eventType[0]).addEventListener(eventType[1], (event) => {
+            event.target.value = eventType[2];
+        });
+
+    }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<button id="clickMe">Click me</button>
+
+<script>
+
+    const student = {
+        name: "Арсен",
+        surname: "Сидорик",
+        fname: "Юрійович",
+        birth_date: "15.03.2004",
+        birth_city: "Івано-Франківськ"
+    };
+
+    const element = document.createElement("p");
+    element.textContent = (student.surname + " " + student.name + " " + student.fname);
+
+    //document.write
+    document.body.appendChild(element);
+    document.getElementById("clickMe").addEventListener("click", () => alert(student.birth_city + " " + student.birth_date));
+</script>
+
+</body>
+</html>

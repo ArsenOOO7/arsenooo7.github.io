@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<style>
+    form{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 30%;
+    }
+</style>
+<body>
+
+<form action="">
+
+    <input type="text" id="x" placeholder="x">
+    <input type="text" id="y" placeholder="y">
+
+    <input type="text" placeholder="Result" id="result" disabled>
+    <button onclick="update(event)">Calculate</button>
+
+</form>
+
+<script>
+
+
+    function factorial(i){
+
+        let factorial_value = 1;
+        for(let j = 1; j <= i; ++j){
+            factorial_value *= j;
+        }
+
+        return factorial_value;
+    }
+
+    function process(x, y){
+
+        let sum = 0;
+        for(let i = 7; i <= 9; ++i){
+
+            const minusOne = Math.pow(-1, i + 1);
+            const numerator = factorial(i) / x + y;
+            const denominator = factorial(i + 1);
+
+            sum += minusOne * (numerator / denominator);
+
+        }
+
+        return sum;
+    }
+
+
+    function update(event){
+        event.preventDefault();
+        result.value = process(value("x"), value("y"))
+    }
+
+    const result = document.getElementById("result");
+    const value = function(id){
+        return parseInt(document.getElementById(id).value);
+    }
+
+
+</script>
+
+</body>
+</html>

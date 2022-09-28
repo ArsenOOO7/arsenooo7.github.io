@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<style>
+    #par_one{
+        width: 300px;
+    }
+</style>
+<body>
+
+<p>
+    <select id="country">
+    </select>
+</p>
+
+<p><input placeholder="Густина і площа" type="text" id="par_one" disabled></p>
+<p><input placeholder="Населення" type="text" id="par_two" disabled></p>
+
+<p><button onclick="popAndSquare()">Густина і площа</button></p>
+<p><button onclick="allPop()">Населення</button></p>
+
+<script>
+
+    //new Array
+    //new Array
+
+    //fun1
+    //fun2
+
+    const countries = {
+        Ukraine: {
+            population: 76.1,
+            square: 603_700
+        },
+        Poland: {
+            population: 126.1,
+            square: 322_565
+        },
+        Germany: {
+            population: 232.6,
+            square: 357_588
+        },
+        France: {
+            population: 117.6,
+            square: 543_940
+        },
+        Spain: {
+            population: 92.5,
+            square: 505_990
+        },
+    };
+
+    const population_square = document.getElementById("par_one");
+    const population = document.getElementById("par_two");
+
+    const selection = document.getElementById("country");
+    for(let country of Object.keys(countries)){
+
+        const option = document.createElement("option");
+        option.value = country;
+        option.innerHTML = country;
+
+        selection.appendChild(option);
+    }
+
+    function popAndSquare(){
+
+        const country = countries[selection.value];
+        population_square.value = "Населення на кв. км: " + country.population + "; Площа: " + country.square;
+
+    }
+
+    function allPop(){
+
+        const country = countries[selection.value];
+        population.value = "Населення : " + (country.population * country.square);
+
+    }
+
+</script>
+
+</body>
+</html>
