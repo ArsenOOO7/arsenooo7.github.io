@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<p id = "time"></p>
+
+<script>
+
+    const time_element = document.getElementById("time");
+    function clock(){
+
+        time_element.textContent = format();
+
+    }
+
+    function format(){
+        const date = new Date(Date.now());
+        const year = date.getFullYear();
+
+        let month = (date.getMonth() + 1);
+        if(month < 10){
+            month = "0" + month.toString();
+        }
+        const day = date.getDate();
+
+        const hour = date.getHours();
+        const minute = date.getMinutes();
+        const second = date.getSeconds();
+
+        return `${year}:${month}:${day}:${hour}:${minute}:${second}`;
+
+    }
+
+    setInterval(clock, 1000);
+
+</script>
+
+</body>
+</html>

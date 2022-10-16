@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .fields{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 40%;
+    }
+</style>
+<body>
+
+<div class="fields">
+    <input type="text" placeholder="Rows" id = "rows">
+    <input type="text" placeholder="Cols" id = "cols">
+    <button id="calculate" onclick="calculationProcess()">Calculate</button>
+    <button id="matrix" onclick="matrixProcess()">Build matrix</button>
+</div>
+
+<p id="error"></p>
+<p id="calcResult"></p>
+
+<p>
+<table id = "matrixTable"></table></p>
+
+<script>
+
+    const value = function(id){
+        return parseInt(document.getElementById(id).value);
+    }
+
+    const calcValue = function(i, j){
+        return 11 * j + i;
+    }
+
+    const matrixTable = document.getElementById("matrixTable");
+    const error = document.getElementById("error");
+
+    function matrixProcess(){
+        const rows = value("rows");
+        const cols = value("cols");
+
+        for(let i = 1; i <= cols; ++i){
+
+            const field = document.createElement("tr");
+
+            for(let j = 1; j <= rows; ++j){
+                const subField = document.createElement("td");
+                subField.innerHTML = calcValue(i, j);
+                field.appendChild(subField);
+            }
+
+            matrixTable.appendChild(field);
+        }
+    }
+
+
+    function calculationProcess(){
+        const rows = value("rows");
+        const cols = value("cols");
+
+        if(rows < 3){
+            error.innerHTML = "It must have at least 3 rows!";
+            return;
+        }
+
+        let sum = 0;
+        for(let i = 1; i <= cols; ++i){
+            sum += calcValue(i, 3);
+        }
+
+        document.getElementById("calcResult").innerHTML = "Result: " + sum;
+
+    }
+
+
+</script>
+
+</body>
+</html>
