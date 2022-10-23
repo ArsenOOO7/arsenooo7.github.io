@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 2</title>
+</head>
+<body>
+
+<textarea name="" id="big_field" cols="60" rows="10" readonly></textarea>
+<div id="keyboard"></div>
+
+<script>
+
+  const letters = ['а', 'б', 'в', 'г', 'е', 'є', 'ж', 'з', 'и', 'і', 'ї', 'й', 'к', 'л', 'м', 'н', 'о',
+    'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ь', 'є', 'ю', 'я', 'Пробіл'];
+
+  const field = document.getElementById("big_field");
+  const keyBoard = document.getElementById("keyboard");
+  const lineBreak = document.createElement("br");
+
+  let counter = 0;
+  for(const letter of letters){
+    const element = document.createElement("button");
+    element.textContent = letter;
+    element.addEventListener("click", (event) => {
+
+        let value = event.target.innerText;
+        if(value === "Пробіл"){
+           value = " ";
+        }
+
+        field.value += value;
+    })
+    keyBoard.appendChild(element);
+    if(counter++ % 20 === 0){
+      keyBoard.appendChild(lineBreak);
+    }
+  }
+
+</script>
+
+</body>
+</html>

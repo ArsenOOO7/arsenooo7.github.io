@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 5</title>
+</head>
+<body>
+
+<p id="percentage"></p>
+<p>
+    <p id="expression"></p>
+    <input type="text" id="quiz">
+</p>
+
+<p id="message"></p>
+
+<p>
+   <button id="start" onclick="run()">Start</button>
+   <button id="check" hidden>Check</button>
+   <button id="next" hidden>Next</button>
+   <button id="reset" hidden>Reset</button>
+</p>
+
+
+<script>
+
+    const percentage = document.getElementById("percentage");
+    const expression = document.getElementById("expression");
+    const answer = document.getElementById("quiz");
+    const message = document.getElementById("message");
+
+    const startBtn = document.getElementById("start");
+    const checkBtn = document.getElementById("check");
+    const nextBtn = document.getElementById("next");
+    const resetBtn = document.getElementById("reset");
+
+    const randomNumber = () => {return Math.floor(Math.random() * 9) + 1; }
+    const readAnswer = () => {return parseInt(answer.value);}
+
+    function generateNumbers(){
+        const array = [];
+        for(let i = 0; i < 10; ++i){
+            let a = randomNumber();
+            let b = randomNumber();
+            array[i] = [a, b, (a * b)];
+        }
+
+        return array;
+    }
+
+
+    function run(){
+
+        let question = 0;
+        let mistakes = 0;
+        let correct = 0;
+
+        percentage.innerHTML = ''
+        answer.innerHTML = ''
+        message.innerHTML = ''
+
+        const array = generateNumbers();
+
+        startBtn.hidden = true;
+        checkBtn.hidden = false;
+        resetBtn.hidden = false;
+        nextBtn.hidden = true;
+
+        showQuestion(question, array);
+        checkBtn.addEventListener("click", () => {
+
+            const answerValue = readAnswer()
+            if(answerValue === array[question][2]){
+                message.innerHTML = "Correct!"
+                ++correct
+            }else{
+                message.innerHTML = "Incorrect! Right answer is " + array[question][2];
+                ++mistakes;
+            }
+
+            percentage.innerHTML = (question + 1) + "/" + array.length + ". " + (correct * 10) + "% (mistakes: " + mistakes + ")"
+            nextBtn.hidden = false
+
+        });
+
+        nextBtn.addEventListener("click", () => {
+
+            ++question;
+            if(question >= array.length){
+                message.innerHTML = "Test is over!";
+            }else {
+                message.innerHTML = ''
+                showQuestion(question, array);
+            }
+            nextBtn.hidden = true
+
+        })
+
+        resetBtn.addEventListener("click", () => {
+            run()
+        })
+
+    }
+
+    function showQuestion(index, questions){
+
+        const exp =  questions[index];
+        expression.innerHTML = exp[0] + " * " + exp[1];
+        answer.value = ''
+
+    }
+
+</script>
+
+</body>
+</html>

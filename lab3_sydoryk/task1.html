@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 1</title>
+</head>
+<body>
+
+<p>
+  <label for="length">Довжина</label>
+  <input type="number" id="length">
+</p>
+<p>
+  <label for="width">Ширина</label>
+  <input type="number" id="width">
+</p>
+
+<p id="result"></p>
+
+
+<script>
+
+  const length = document.getElementById("length");
+  const width = document.getElementById("width");
+
+  width.addEventListener("keyup", (event) => {
+      calculate();
+  })
+  length.addEventListener("keyup", (event) => {
+    calculate();
+  })
+
+  const result = document.getElementById("result");
+
+  const readValue = (element) => {return parseInt(element.value);}
+  const perimeter = (width, length) => {return (width + length) * 2;}
+  const square = (width, length) => {return width * length;}
+  const diagonal = (width, length) => {return Math.sqrt(width*width + length*length);}
+
+  function calculate(){
+
+      const widthValue = readValue(width);
+      const lengthValue = readValue(length);
+
+      let strResult = `Периметр: ${perimeter(widthValue, lengthValue)}`;
+      strResult += "<br>";
+      strResult += `Площа: ${square(widthValue, lengthValue)}`;
+      strResult += "<br>";
+      strResult += `Діагональ: ${diagonal(widthValue, lengthValue)}`;
+
+      result.innerHTML = strResult;
+
+  }
+
+</script>
+
+</body>
+</html>

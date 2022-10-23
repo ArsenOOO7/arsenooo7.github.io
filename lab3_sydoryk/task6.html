@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 6</title>
+</head>
+<style>
+  li{
+    list-style: none;
+  }
+</style>
+<body>
+
+<p><div id="fruits">
+  <p id="flabel" style="cursor: pointer">fruits</p>
+  <ul id="fruits-list" hidden>
+    <li>apple</li>
+    <li>pineapple</li>
+    <li>appricot</li>
+    <li>pear</li>
+    <li>lemon</li>
+  </ul>
+</div></p>
+
+<p><div id="vegetables">
+  <p id="vlabel" style="cursor: pointer">vegetables</p>
+  <ul id="vegetables-list" hidden>
+    <li>potatoes</li>
+    <li>beetroot</li>
+    <li>carrots</li>
+    <li>pear</li>
+  </ul>
+</div></p>
+
+
+<script>
+
+  const fruits = document.getElementById("flabel");
+  const vegetables = document.getElementById("vlabel");
+
+  const flist = document.getElementById("fruits-list");
+  const vlist = document.getElementById("vegetables-list");
+
+  fruits.addEventListener("click", () => {
+    flist.hidden = !flist.hidden
+  })
+
+  vegetables.addEventListener("click", () => {
+    vlist.hidden = !vlist.hidden
+  })
+
+</script>
+
+</body>
+</html>

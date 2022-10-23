@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 4</title>
+</head>
+<body>
+
+<div id="image"></div>
+<p>
+    <button id="nextBnt" onclick="prev()">Prev</button>
+    <button id="prevBnt" onclick="next()">Next</button>
+</p>
+
+<script>
+
+    const path = "./resources/";
+    const files = [];
+    for(let i = 1; i <= 4; ++i){
+        const img = new Image(300, 400);
+        img.src = path + i + ".jpeg";
+        files.push(img);
+    }
+
+    const imageElement = document.getElementById("image");
+
+    let current = 0;
+    next();
+
+    function next(){
+        if(current >= files.length){
+            current = 0;
+        }
+        printImage(current++);
+    }
+
+    function prev(){
+        if(current < 0){
+            current = files.length - 1;
+        }
+        printImage(current--);
+    }
+
+    function printImage(index){
+        imageElement.innerHTML = ''
+        imageElement.appendChild(files[index])
+    }
+
+</script>
+
+</body>
+</html>

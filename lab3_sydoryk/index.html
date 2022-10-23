@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <title>Lab3</title>
 </head>
 
 <style>
@@ -16,23 +16,23 @@
 </style>
 <body>
 
-<h1>List of labs. Arsen Sydoryk (#8)</h1>
+<h1>Lab 3. Arsen Sydoryk</h1>
 <div id="links">
 
 </div>
 
 <script>
 
-  const uri = "https://arsenooo7.github.io/";
-  const labs = 3;
+  const uri = "https://arsenooo7.github.io/lab3_sydoryk/";
+  const tasks = 6;
 
 
   const links = document.getElementById("links");
-  for(let i = 1; i <= labs; ++i){
+  for(let i = 1; i <= tasks; ++i){
 
     const link = document.createElement("a");
-    link.href = uri + "lab" + i + "_sydoryk";
-    link.innerHTML = "Лабораторна робота №" + i;
+    link.href = uri + "task" + i + ".html";
+    link.innerHTML = "Task " + i;
     links.appendChild(link);
 
   }
