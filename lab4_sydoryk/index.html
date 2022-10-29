@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab4</title>
+</head>
+<style>
+  hr{
+    margin: 2em 0 2em 0;
+  }
+</style>
+<body>
+
+<div id="preview">
+  <h1>Lab4. Arsen Sydoryk</h1>
+  <p>
+    <button id="start" onclick="start()">Start test</button>
+  </p>
+</div>
+
+<div class="tests" id="tests" hidden>
+
+  <h1>Test</h1>
+  <form action=""  id = "form">
+
+  </form>
+
+</div>
+
+<script>
+
+  const questions = { select: [
+    {
+      header: "Which component is used to map a request to a method of a controller?",
+      type: "radio",
+      name: "first",
+      answers:[
+        {
+          caption: "RequestMapping",
+          right: true
+        },
+        {
+          caption: "None of above",
+          right: false
+        },
+        {
+          caption: "RequestParameter",
+          right: false
+        },
+        {
+          caption: "PathVariables",
+          right: false
+        },
+        {
+          caption: "RequestResolver",
+          right: false
+        }
+      ]
+    },
+    {
+      header: "Which annotation is used to receive a model object initialized by the request parameters, in a request processing method?",
+      type: "radio",
+      name: "second",
+      answers: [
+        {
+          caption: "@RequestParam",
+          right: false
+        },
+        {
+          caption: "@PathParam",
+          right: false
+        },
+        {
+          caption: "none of above",
+          right: false
+        },
+        {
+          caption: "@ModelAttribute",
+          right: true
+        },
+        {
+          caption: "@PathVariable",
+          right: false
+        }
+      ]
+    },
+
+    {
+      header: "Which of the following is not a component of the Spring framework? (select two items)",
+      type: "checkbox",
+      name: "third",
+      answers:[
+        {
+          caption: "IoC",
+          right: false
+        },
+        {
+          caption: "AOP",
+          right: false
+        },
+        {
+          caption: "Thymeleaf",
+          right: true
+        },
+        {
+          caption: "HTML/JSP",
+          right: true
+        },
+        {
+          caption: "Spring MVC",
+          right: false
+        }
+      ]
+    },
+    {
+      header: "Which elements are not components of Spring MVC? (select two options)",
+      type: "checkbox",
+      name: "fourth",
+      answers:[
+        {
+          caption: "IoC",
+          right: true
+        },
+        {
+          caption: "Repository",
+          right: true
+        },
+        {
+          caption: "ViewResolver",
+          right: false
+        },
+        {
+          caption: "DispatcherServlet",
+          right: false
+        },
+        {
+          caption: "HandlerMapping",
+          right: false
+        }
+      ]
+    }],
+    input: [
+    {
+      header: "While creating SessionFactory in hibernate, which design pattern should be adopted?",
+      type: "text",
+      answer: "Singleton"
+    },
+    {
+      header: "What will output the following code?",
+      type: "number",
+      code: "<?php\n$a = 1;\necho $a = 4;",
+      answer: 4
+    }]
+  };
+
+
+  const tests_form = document.getElementById("form");
+
+  for(const block of questions.select){
+
+    const test_block = document.createElement("div");
+    test_block.className = "test-block";
+
+    const label = document.createElement("p")
+    label.innerHTML = block.header
+
+    test_block.append(document.createElement("hr"));
+    test_block.append(label);
+
+    for(let answer of block.answers){
+      let answer_element = document.createElement("input")
+      answer_element.name = block.name
+      answer_element.type = block.type
+      answer_element.setAttribute("right", answer.right)
+
+      const para = document.createElement("p");
+      const label_for_answer = document.createElement("label")
+      label_for_answer.innerHTML = answer.caption
+
+      para.append(answer_element)
+      para.append(label_for_answer)
+      test_block.append(para)
+    }
+
+    tests_form.append(test_block)
+  }
+
+  for(let block of questions.input){
+    const test_block = document.createElement("div");
+    test_block.className = "test-block";
+
+    const label = document.createElement("p")
+    label.innerHTML = block.header
+
+    const input = document.createElement("input");
+    input.type = block.type
+    input.setAttribute("right", block.answer)
+
+    test_block.append(document.createElement("hr"));
+    test_block.append(label);
+
+    if("code" in block){
+      const code_block = document.createElement("pre");
+      code_block.textContent = block.code
+      test_block.append(code_block)
+    }
+
+    test_block.append(input);
+
+    tests_form.append(test_block)
+  }
+
+  const complete = document.createElement("button")
+  complete.innerText = "Complete"
+  tests_form.append(document.createElement("br"))
+  tests_form.append(complete)
+
+
+  function start(){
+    document.getElementById("preview").hidden = true
+    document.getElementById("tests").hidden = false
+  }
+
+
+  const radio = 2;
+  const checkbox = .5;
+  const input = 2;
+
+  tests_form.addEventListener("submit", (event) => {
+
+    event.preventDefault()
+    const form_elements = tests_form.elements;
+    let percentage = 0;
+
+    for(let element of form_elements){
+
+      if(element.getAttribute("right") === "true" && element.checked || element.getAttribute("right") === element.value){
+          switch(element.type){
+            case "radio":
+              percentage += radio;
+              break;
+            case "checkbox":
+              percentage += checkbox;
+              break;
+            default:
+              percentage += input
+          }
+      }
+
+      document.getElementById("tests").hidden = true
+    }
+
+    const result = document.createElement("p");
+    result.id = "result";
+    result.innerText = "Your result is: " + percentage * 10 + "%";
+
+    const restart = document.createElement("button");
+    restart.innerText = "Restart"
+    restart.onclick = () => location.reload();
+
+    document.body.append(result)
+    document.body.append(restart)
+
+  })
+
+</script>
+
+</body>
+</html>
