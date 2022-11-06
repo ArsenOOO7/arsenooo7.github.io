@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task1 </title>
+</head>
+
+<style>
+
+  .window{
+    width: 400px;
+    height: 600px;
+    background: aqua;
+  }
+
+  .menu{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .section{
+    background: gray;
+    padding: 1rem;
+    width: 33.333%;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .section.active{
+    background: lightblue;
+  }
+
+  li{
+    padding: 10px;
+    text-decoration: none;
+    border-bottom: 1px solid black;
+  }
+
+  .list-ul{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .list{
+    width: 70%;
+  }
+
+</style>
+
+<body>
+
+<div class="window">
+  <div class = "menu">
+    <div class="section active">Archives</div>
+    <div class="section">Topics</div>
+    <div class="section">Pages</div>
+  </div>
+  <div class="list">
+    <ul class="list-ul" id = "list-ul">
+    </ul>
+  </div>
+</div>
+
+<script>
+
+  const data = {
+
+    'archives': {
+      key: 0,
+      data: [
+            "HTML tutorials",
+            "Css techniques",
+            "Website builds",
+            "Flash",
+            "Site skills",
+            "Some category"
+      ]
+    },
+
+    'topics': {
+      key: 1,
+      data: [
+            "Topic #1",
+            "Topic #2",
+            "Topic #3",
+            "Topic #4",
+            "Topic #5",
+            "Topic #6",
+            "Topic #7"
+    ]},
+
+    'pages': {
+      key: 2,
+      data: [
+        "Page #1",
+        "Page #2",
+        "Page #3",
+        "Page #4",
+        "Page #5",
+        "Page #6"
+      ]
+    }
+  }
+
+  let key = 0;
+  let current_element = "archives";
+  const elements = document.getElementsByClassName("section");
+
+  const main_list = document.getElementById("list-ul");
+  console.log(elements.length)
+  load()
+
+  let i = 0;
+  for(const element of elements){
+
+    element.addEventListener("click", () => {
+
+      current_element = element.innerText.toLowerCase()
+      load()
+
+    })
+    ++i;
+  }
+
+  function load(){
+
+    elements[key].className = "section"
+    key = data[current_element].key
+    elements[key].className = "section active"
+    main_list.innerHTML = ''
+    for(let list_element of data[current_element].data){
+      const li = document.createElement("li");
+      li.innerText = list_element;
+      main_list.appendChild(li);
+    }
+  }
+
+
+</script>
+
+</body>
+</html>

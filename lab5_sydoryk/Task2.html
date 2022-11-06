@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Classmates</title>
+</head>
+<style>
+    table{
+        width: 100%;
+    }
+    td{
+        text-align: center;
+    }
+    img{
+        width: 400px;
+        height: 400px;
+    }
+</style>
+<body>
+
+
+<table border="1">
+
+    <tr>
+        <td><img src="https://i.guim.co.uk/img/media/ffc016b01f45eeec94ff69dc59eb65a9137ae52a/0_95_3500_2101/master/3500.jpg?width=1200&height=900&quality=85&auto=format&fit=crop&s=915d4080291d752325c0a25518ac4602" alt="" id="sherlock"></td>
+        <td><img src="https://static0.gamerantimages.com/wordpress/wp-content/uploads/2021/10/Gandalf-Name-Feature-Image.jpg" alt="" id="gandalf"></td>
+        <td><img src="https://media.vogue.fr/photos/5f4f79560130d6888f870109/2:3/w_2560%2Cc_limit/076_CHL_041258.jpg" alt="" id="indiana"></td>
+        <td><img src="https://upload.wikimedia.org/wikipedia/uk/2/2c/Stierlitz-Tichonov.jpg" alt="" id="shtierlitz"></td>
+    </tr>
+    <tr>
+        <td colspan="4" id = "bio">Біографія</td>
+    </tr>
+</table>
+
+<script>
+
+    const people = {
+
+        "sherlock": {
+            text: "Високорозвинений соціопат"
+        },
+        "gandalf":{
+            text: "YOU SHALL NOT PASS!"
+        },
+        "indiana":{
+            text: "Пережив ядерний вибух",
+            subtext: "..."
+        },
+        "shtierlitz":{
+            text: "У двері постукали null разів",
+            subtext: "- Process finished with exit code 139 (interrupted by signal 11: SIGSEGV), - подумав Штірліц"
+        }
+    };
+
+    const bio = document.getElementById("bio")
+    const images = document.getElementsByTagName("img");
+    for(const image of images){
+
+        image.addEventListener("click", () => {
+            bio.innerHTML = ""
+            const json_elem = people[image.id]
+            bio.innerText = json_elem.text
+            if("subtext" in json_elem){
+                bio.innerHTML += bio.innerText + "<br>" + json_elem.subtext;
+            }
+        })
+
+    }
+
+</script>
+
+</body>
+</html>
