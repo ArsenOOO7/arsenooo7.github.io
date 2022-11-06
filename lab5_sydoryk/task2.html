@@ -61,7 +61,7 @@
             const json_elem = people[image.id]
             bio.innerText = json_elem.text
             if("subtext" in json_elem){
-                bio.innerHTML += bio.innerText + "<br>" + json_elem.subtext;
+                bio.innerHTML = bio.innerText + "<br>" + json_elem.subtext;
             }
         })
 
