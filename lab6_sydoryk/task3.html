@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 3</title>
+</head>
+<body>
+
+<h1>Reverse</h1>
+<input type="number" id="numbers"> <button onclick="reverse()">Reverse</button>
+<p id="result"></p>
+
+<hr>
+
+
+<h1>No zeros</h1>
+<input type="number" id="nozeros"> <button onclick="no_zeros()">No zeros</button>
+<p id="result_nozeros"></p>
+
+<hr>
+
+
+<h1>Reverser</h1>
+<input type="text" id="reverser"> <button onclick="reverser()">Reverser</button>
+<p id="result_reverser"></p>
+
+<hr>
+
+
+<h1>Replace</h1>
+<input type="text" id="replace" value="Я не люблю морозиво"> <button onclick="replace()">Replace</button>
+<p id="result_replace"></p>
+
+<script>
+
+  function reverse(){
+    const reverse_nums = document.getElementById("numbers")
+    const value = reverse_nums.value;
+    document.getElementById("result").innerText = value.split("").reverse().join("")
+  }
+
+  function no_zeros(){
+    const no_zeros = document.getElementById("nozeros")
+    document.getElementById("result_nozeros").innerText = no_zeros.value.replace(/0/g, "");
+  }
+
+
+  function reverser(){
+
+    const reverser = document.getElementById("reverser")
+    document.getElementById("result_reverser").innerText = reverser.value.split("").reverse().join("")
+
+  }
+
+
+  function replace(){
+    const replace = document.getElementById("replace")
+    let value = replace.value.split(" ");
+    let third = value[2]
+    value[2] = value[1]
+    value[1] = third
+
+    document.getElementById("result_replace").innerText = value.join(',')
+  }
+
+
+
+</script>
+
+</body>
+</html>

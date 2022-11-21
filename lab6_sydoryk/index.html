@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab 6. Arsen Sydoryk</title>
+</head>
+
+<style>
+
+  #links{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+</style>
+<body>
+
+<h1>Lab 6. Arsen Sydoryk</h1>
+<h2>01:57 22.11 бо до того світла не було</h2>
+<div id="links">
+
+</div>
+
+<script>
+
+  const uri = "https://arsenooo7.github.io/lab6_sydoryk/";
+  const tasks = 3;
+
+
+  const links = document.getElementById("links");
+  for(let i = 2; i <= tasks; ++i){
+
+    const link = document.createElement("a");
+    link.href = uri + "task" + i + ".html";
+    link.innerHTML = "Task " + i;
+    links.appendChild(link);
+
+  }
+
+</script>
+</body>
+</html>

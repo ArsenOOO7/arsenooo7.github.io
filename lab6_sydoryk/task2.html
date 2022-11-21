@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+</head>
+
+<style>
+
+  img{
+    width: 20px;
+    height: auto;
+  }
+
+  span{
+    color: red;
+  }
+
+  .error-field{
+    border: 4px solid red;
+    color: red;
+  }
+
+</style>
+
+<body>
+
+<p id = "result"></p>
+
+<hr>
+
+
+<form action="" id="my_form">
+
+
+  <p>
+    <label for="name">Name</label>
+    <input type="text" id="name">
+    <img id="name-icon" src="" alt="">
+    <span id="name-message"></span>
+  </p>
+
+  <p>
+    <label for="surname">Surname</label>
+    <input type="text" id="surname">
+    <img id="surname-icon" src="" alt="">
+    <span id="surname-message"></span>
+  </p>
+
+  <p>
+    <label for="login">Login</label>
+    <input type="text" id="login" >
+    <img id="login-icon" src="" alt="">
+    <span id="login-message"></span>
+  </p>
+
+  <p>
+    <label for="password">Password</label>
+    <input type="password" id="password">
+    <img id="password-icon" src="" alt="">
+    <span id="password-message"></span>
+  </p>
+
+  <p>
+    <label for="post_index">Post index</label>
+    <input type="number" id="post_index">
+    <img id="post_index-icon" src="" alt="">
+    <span id="post_index-message"></span>
+  </p>
+
+  <p>
+    <label for="email">Email</label>
+    <input type="text" id="email">
+    <img id="email-icon" src="" alt="">
+    <span id="email-message"></span>
+  </p>
+
+  <p>
+    <input type="submit" value="Submit">
+  </p>
+
+</form>
+
+<script>
+
+  const validation = {
+          name: /^([A-ZА-ЯЇҐ]{1})([a-zа-яїґ]+)/i,
+          surname: /^([A-ZА-ЯЇҐ]{1})([a-zа-яїґ]+)/i,
+          login: /^[A-Za-z]/i,
+          password: /^(?=.*[a-z])(?=.*\d)[a-zA-Z\d]{6,}/i,
+          post_index: /^\d{5}/i,
+          email: /^([a-zA-Z\d]+)(\.[a-zA-Z\d]+)*@([a-zA-Z\d]+)(\.[a-zA-Z\d]+)*/i
+  };
+
+  const result = document.getElementById("result");
+  result.innerText = ""
+  const email = "mail.mail@mail.com";
+  const regex = validation.email
+
+  const before = document.createElement("p")
+  before.innerText = "My mail: " + email
+  result.before(before)
+
+  const match = email.match(regex)
+  for(let i = 0; i < match.length; ++i){
+    result.innerText += match[i]
+    result.append(document.createElement('br'))
+  }
+
+
+  const image_source = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Eo_circle_green_checkmark.svg/2048px-Eo_circle_green_checkmark.svg.png";
+  document.getElementById("my_form").onclick = () => {
+
+    for(let key in validation){
+      const regex = validation[key];
+      const element = document.getElementById(key)
+      const error_element = document.getElementById(key + "-message");
+      const image = document.getElementById(key + "-icon");
+      if(!element.value.match(regex)){
+        error_element.innerText = "Invalid data!";
+        image.src = ""
+        element.className = "error-field"
+      }else{
+        error_element.innerText = "";
+        image.src = image_source
+        element.className = ""
+      }
+    }
+    return false
+  }
+</script>
+
+</body>
+</html>
