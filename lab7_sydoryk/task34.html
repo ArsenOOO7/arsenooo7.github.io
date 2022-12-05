@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 3.4</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+</head>
+<body>
+
+<h1>Enter 'correct'</h1>
+<form action="javascript:alert('Успішно')">
+  <p><input type="text" placeholder="Here"></p>
+  <p><input type="submit" value="Check"></p>
+</form>
+<span></span>
+
+<script>
+  let sp = $("span");
+
+  $('form').submit(function(){
+    sp.text("").show();
+    if($('input:first').val() === 'correct'){
+      sp.text("Checking").show()
+      return true;
+    }
+
+    sp.text("Incorrect").show().fadeTo(1_000)
+    return false;
+  })
+
+</script>
+
+</body>
+</html>

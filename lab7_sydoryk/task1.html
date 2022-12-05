@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 1</title>
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+</head>
+<body>
+
+<h1>Page content</h1>
+<a href="#" class="show">Show text</a>
+<a href="#" class="hide">Hide text</a>
+<p id="hidden">Hide text</p>
+
+<script>
+
+    /*
+        1 task
+    $(document).ready(() => alert("Doc's ready!"));
+    */
+
+    $(document).ready(() => {
+
+        const text = $('#hidden');
+        text.hide();
+
+        $('.show').click(() => text.show(200));
+        $('.hide').click(() => text.hide(200));
+
+    })
+
+</script>
+
+</body>
+</html>

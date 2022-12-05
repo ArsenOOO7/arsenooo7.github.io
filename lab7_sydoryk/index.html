@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab 6. Arsen Sydoryk</title>
+</head>
+
+<style>
+
+  #links{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+</style>
+<body>
+
+<h1>Lab 7. Arsen Sydoryk</h1>
+<div id="links">
+
+</div>
+
+<script>
+
+  const uri = "https://arsenooo7.github.io/lab7_sydoryk/";
+  const tasks = 3;
+
+  let subtasks = 4;
+  const links = document.getElementById("links");
+  for(let i = 1; i <= tasks; ++i){
+
+    if(i === 3){
+      for(let k = 1; k <= subtasks; ++k){
+        links.appendChild(getLinkSub(i, k))
+      }
+    }else {
+      links.appendChild(getLink(i, i));
+    }
+
+  }
+
+  function getLinkSub(i, k){
+    return getLink('' + i + k, i + '.' + k)
+  }
+
+  function getLink(i, title){
+    const link = document.createElement("a");
+    link.href = uri + "task" + i + ".html";
+    link.innerHTML = "Task " + title;
+    return link;
+  }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 2</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <style>
+        .hover{
+            border: 2px solid black;
+            padding: 2px;
+        }
+    </style>
+</head>
+<body>
+
+<a href="#" class="button">Show</a>
+
+<p hidden></p>
+<p>Middle</p>
+<p hidden></p>
+
+<script>
+
+    $(document).ready(() => {
+          $('.button').click(() => {
+
+            $("p:first").text("First para").show()
+            $("p:last").text("Last para").show()
+
+          });
+
+          $("p").hover(
+                function() {
+                    $(this).addClass('hover').show();
+                },
+                function() {
+                    $(this).removeClass('hover').show()
+                }
+          );
+    })
+
+</script>
+
+</body>
+</html>

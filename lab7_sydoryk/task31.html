@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 3.1</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <style>
+        .show{
+            border: 1px solid black;
+            padding: 3px;
+            background: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="obj">Object1</div>
+
+<script>
+
+    let $obj = $('.obj')
+    $obj.click(function () {
+        $(this).addClass('show')
+    })
+
+    $obj.dblclick(function (){
+        $(this).removeClass('show')
+    })
+
+</script>
+
+</body>
+</html>
