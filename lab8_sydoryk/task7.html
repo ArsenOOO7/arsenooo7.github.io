@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 7</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+</head>
+<body>
+
+<h1>Slide UP</h1>
+<p><button id="demo_f">Demo</button></p>
+
+<p id="first">This is some text</p>
+
+<hr>
+<h1>Fade OUT</h1>
+<p><button id="demo_s">Demo</button></p>
+
+<p id="second">This is some text to fade out</p>
+
+
+<hr>
+<h1>Show and hide</h1>
+<p><button id="demo_t">Demo</button></p>
+<p id="third">This is some text to show and hide</p>
+
+<script>
+
+  $("#demo_f").click(function(){
+    $("#first").slideUp(300).delay(400).fadeIn(1000);
+  })
+
+  $("#demo_s").click(function(){
+    $("#second").fadeOut(500).delay(400).fadeIn(1000);
+  })
+
+  $("#demo_t").click(function (){
+    const elm = $("#third")
+    if(elm.css("display") === 'none'){
+      elm.show(500);
+    }else {
+      elm.hide(500);
+    }
+  })
+
+</script>
+
+</body>
+</html>

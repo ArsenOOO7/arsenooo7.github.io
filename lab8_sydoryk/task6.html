@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 6</title>
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+  <style>
+    .empty{
+      width: 60px;
+      height: 60px;
+      margin: 10px;
+      border: 2px solid blue;
+    }
+    .blue{
+      background: blue;
+    }
+
+    .red{
+      background: red;
+    }
+
+    .yellow{
+      background: yellow;
+    }
+
+    .pink{
+      background: pink;
+    }
+  </style>
+</head>
+<body>
+
+
+<h1>.animate()</h1>
+<div class="empty blue"></div>
+
+
+<script>
+
+  $(".empty").animate({
+    width: [ "toggle", "swing" ],
+    height: [ "toggle", "swing" ],
+    opacity: "toggle"
+  },
+  {
+    duration: 5000,
+    specialEasing: {
+      width: "linear",
+      height: "easeOutBounce"
+    },
+    complete: function() {
+      $(this).after("<div>Animation complete.</div>");
+    }
+  });
+
+</script>
+
+</body>
+</html>

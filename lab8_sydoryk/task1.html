@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 1</title>
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+  <style>
+    .block_second{
+      height: 50px;
+      width: 50px;
+      padding: 5px;
+      background: black;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<h1>.html()</h1>
+<p id="first">Magic: <button>Demonstration (click)</button></p>
+
+<hr>
+
+<h1>.css()</h1>
+<div class="block_second">Click</div>
+<p id="second_result"></p>
+
+<hr>
+
+<h1>.val()</h1>
+<input type="text" id="third" placeholder="Type here">
+<p id="third_result"></p>
+<hr>
+
+<h1>.attr()</h1>
+<p><button id="demo">Demo (click to start)</button></p>
+<p><input type="checkbox" id="fourth_one"><span id="fourth_checked">Checked? (click) </span></p>
+<p><input type="text" id="fourth_two" disabled></p>
+<p><input type="text" id="fourth_three">Change type and set disabled</p>
+<p><input type="text" id="fourth_fifth" size="50" value="Result: " readonly></p>
+
+<script>
+
+  $('#first').click(function() {
+    const htmlVal = $(this).html()
+    $(this).text(htmlVal).show()
+  })
+
+  $(".block_second").click(function (){
+
+
+  $(this).css("background", "blue");
+    const data = []
+    const styles = $(this).css(["width", "height", "background", "color", "padding"])
+
+    $.each(styles, (prop, value) => data.push(prop + ": " + value))
+    $("#second_result").html(data.join("<br>"))
+
+  })
+
+
+  $("#third").keyup(function(){
+    $("#third_result").text($(this).val())
+  })
+
+
+  $("#demo").click(function(){
+
+    $("#fourth_one").change(function(){
+      let text;
+      if(!$(this).attr("checked")){
+
+        text = "Yes, it's checked"
+        $(this).attr("checked", "")
+        this.checked = true
+
+      }else{
+        this.checked = false
+        text = "No, it's not"
+
+        $(this).removeAttr("checked")
+
+      }
+        $("#fourth_checked").text(text)
+    })
+
+    $("#fourth_two").attr("value", "Was set by .attr(name, val)")
+    $("#fourth_three").attr({
+      disabled: true,
+      type: "checkbox"
+    })
+
+    $("#fourth_fifth").attr("value", function(i, val){
+      return val + ".attr(name, function) works perfectly!";
+    })
+
+  })
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 3</title>
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+  <style>
+    .empty{
+      width: 60px;
+      height: 60px;
+      margin: 10px;
+      border: 2px solid blue;
+    }
+    .blue{
+      background: blue;
+    }
+
+    .red{
+      background: red;
+    }
+
+    .yellow{
+      background: yellow;
+    }
+
+    .pink{
+      background: pink;
+    }
+  </style>
+</head>
+<body>
+
+<h1>.eq()</h1>
+<p><button id = "demo_f">Demo</button></p>
+<div style="display: flex;" id="first">
+  <div class="empty"></div>
+  <div class="empty"></div>
+  <div class="empty"></div>
+  <div class="empty"></div>
+  <div class="empty"></div>
+  <div class="empty"></div>
+</div>
+<hr>
+
+<h1>.not()</h1>
+<p><button id = "demo_s">Demo</button></p>
+<div style="display: flex;" id="second">
+  <div class="empty blue"></div>
+  <div class="empty pink"></div>
+  <div class="empty yellow"></div>
+  <div class="empty red"></div>
+  <div class="empty blue"></div>
+  <div class="empty blue"></div>
+</div>
+
+<hr>
+<h1>.add()</h1>
+<p><button id = "demo_t">Demo</button></p>
+<div id="third">
+  <div class="empty red separate"></div>
+  <p id="under">Yellow</p>
+</div>
+
+<hr>
+<h1>.has()</h1>
+<p><button id = "demo_fr">Demo</button></p>
+<div class="fourth">
+  <ul>
+    <li>list item 1</li>
+    <li>list item 2
+      <ul>
+        <li>list item 2.1</li>
+        <li>list item 2.2</li>
+      </ul>
+    </li>
+    <li>list item 3</li>
+    <li>list item 4</li>
+  </ul>
+</div>
+
+<hr>
+<h1>.parents()</h1>
+<p><button id = "demo_ff">Demo</button></p>
+<div class="fifth">
+  <ul>
+    <li class="top">1
+
+      <ul>
+        <li class="second_level">1.1</li>
+        <li class="second_level">1.2</li>
+        <li class="second_level">1.3
+          <ul>
+            <li class="child_level">1.3.1</li>
+            <li class="child_level">1.3.2</li>
+            <li class="child_level">1.3.3</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li class="top">2</li>
+    <li class="top">3</li>
+  </ul>
+</div>
+
+<script>
+
+  $("#demo_f").click(function(){
+    $("#first").find(".empty").eq(0).addClass("blue")
+    $("#first").find(".empty").eq(3).addClass("blue")
+  })
+
+  $("#demo_s").click(function(){
+    $("#second").find(".empty").not(".red, .yellow, .pink").css("border", "3px solid red")
+  })
+
+  $("#demo_t").click(function(){
+    $(".separate").add( "#under" ).css( "background", "yellow" );
+  })
+
+  $("#demo_fr").click(function(){
+    $("li").has("ul").css("background", "red")
+  })
+
+  $("#demo_ff").click(function(){
+    $("li.second_level").parents("li").css("background", "black").css("color", "white")
+  })
+
+</script>
+</body>
+</html>

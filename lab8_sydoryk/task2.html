@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 2</title>
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+  <style>
+    .block{
+      height: 50px;
+      width: 50px;
+      padding: 5px;
+      background: black;
+      color: white;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>insertAfter()</h1>
+<p><button id="first_demo">Demo</button></p>
+<div class="">
+<p class="first">First</p>
+<p class="first" id="first_second">Second</p>
+</div>
+<hr>
+
+<h1>.clone()</h1>
+<p><button id="second_demo">Demo</button></p>
+<div>
+  <div id="hello">Hello</div>
+  <div id="goodbye">Goodbye</div>
+</div>
+
+<hr>
+
+<h1>.height(function) & .position()</h1>
+<div class="block">CLICK</div>
+<p id="result"></p>
+
+<script>
+
+  $("#first_demo").click(function (){
+    $("<p class=\"first\">Third</p>").insertAfter("#first_second")
+  })
+
+  $("#second_demo").click(function (){
+    $("#hello").clone().appendTo("#goodbye");
+  })
+
+  $(".block").click(function(){
+    $(this).height(100)
+
+    const pos = $(this).position()
+    $("#result").text("Left: " + pos.left + "; Top: " + pos.top)
+  })
+
+</script>
+
+</body>
+</html>

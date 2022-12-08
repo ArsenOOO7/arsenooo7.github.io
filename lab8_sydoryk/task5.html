@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 5</title>
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+</head>
+<body>
+
+<h1>.each</h1>
+<p><button id="demo_f">Generate list</button></p>
+<ul class="gen_f">
+
+</ul>
+<hr>
+<h1>isArray()</h1>
+<p><button id="demo_s">Demo</button></p>
+
+<p id="result"></p>
+
+<script>
+
+  $("#demo_f").click(function(){
+    const data = Array.from(Array(20).keys());
+    const ul = $(".gen_f")
+    ul.empty()
+    $.each(data, (number) => {
+      ul.append($("<li></li>").text(number))
+    })
+  })
+
+  $("#demo_s").click(function(){
+
+      const data = [[], 1, [1, 2, 3], 0, "Object"]
+      const result = []
+      $.each(data, function(value){
+          result.push("" + data[value] + ": " + $.isArray(data[value]))
+      })
+
+      $("#result").html(data.toString() + "<br>" + result.join("<br>"))
+
+  })
+
+
+</script>
+</body>
+</html>

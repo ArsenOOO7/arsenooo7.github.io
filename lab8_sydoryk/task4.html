@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 4</title>
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+
+</head>
+<body>
+
+<h1>Filter</h1>
+
+<ul class="first_ul">
+  <li>1</li>
+  <li class="some_class">class</li>
+  <li>3</li>
+  <li>4</li>
+  <li>5</li>
+  <li class="some_class">class</li>
+  <li>7</li>
+  <li>8</li>
+  <li class="some_class">class</li>
+</ul>
+
+<p><button id="demo_f">Demo</button></p>
+
+<hr>
+<ul class="second_ul">
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+  <li>4</li>
+  <li>5</li>
+  <li>6</li>
+  <li>7</li>
+  <li>8</li>
+  <li>9</li>
+  <li>10</li>
+</ul>
+
+<p><button id="demo_s">Demo</button></p>
+
+
+<script>
+
+  $("#demo_f").click(function(){
+
+      $(".first_ul").children().filter(".some_class").text("MODIFIED").css("background", "blue")
+
+  })
+
+  $("#demo_s").click(function(){
+
+    $(".second_ul").children().filter((index) => (index+1) % 3 === 0).text("MODIFIED").css("background", "blue")
+
+  })
+
+
+
+</script>
+
+</body>
+</html>
