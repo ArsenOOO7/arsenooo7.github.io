@@ -18,6 +18,8 @@
         let img = $('#image')
         img.show();
 
+        img.click(() => $(img).hide())
+
         img.mouseover(function(){
             $('#text').show()
         })
